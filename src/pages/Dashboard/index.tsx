@@ -62,23 +62,21 @@ const Dashboard: React.FC = () => {
               <p>Entradas</p>
               <img src={incomeImg} alt="Income" />
             </header>
-            <h1 data-testid="balance-income">{`R$ ${formatValue(income)}`}</h1>
+            <h1 data-testid="balance-income">{`${formatValue(income)}`}</h1>
           </Card>
           <Card>
             <header>
               <p>Saídas</p>
               <img src={outcomeImg} alt="Outcome" />
             </header>
-            <h1 data-testid="balance-outcome">
-              {`R$ ${formatValue(outcome)}`}
-            </h1>
+            <h1 data-testid="balance-outcome">{`${formatValue(outcome)}`}</h1>
           </Card>
           <Card total>
             <header>
               <p>Total</p>
               <img src={totalImg} alt="Total" />
             </header>
-            <h1 data-testid="balance-total">{`R$ ${formatValue(total)}`}</h1>
+            <h1 data-testid="balance-total">{`${formatValue(total)}`}</h1>
           </Card>
         </CardContainer>
 
@@ -96,9 +94,11 @@ const Dashboard: React.FC = () => {
             <tbody>
               {transactions.map(transaction => (
                 <tr key={transaction.id}>
-                  <td className="title">{transaction.title}</td>
-                  <td className="income">
-                    {`R$ ${formatValue(transaction.value)}`}
+                  <td className={transaction.title}>{transaction.title}</td>
+                  <td className={`${transaction.type}`}>
+                    {`${
+                      transaction.type === 'outcome' ? '- ' : ''
+                    }${formatValue(transaction.value)}`}
                   </td>
                   <td>{transaction.category.title}</td>
                   <td>{formatDate(transaction.created_at)}</td>
