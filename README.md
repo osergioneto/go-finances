@@ -64,8 +64,6 @@ $ npm run start
 
 These are the technologies used in this project
 
-💻
-
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Styled-Components](https://styled-components.com/) 💅
